@@ -3,6 +3,7 @@ package sample;// Shows several JOptionPane windows on the screen.
 import javax.swing.*; // for GUI components
 public class UseOptionPanes {
     private StoryNode start;
+    private static int count = 0;
     /*public void executePath(StoryNode start) throws IllegalStoryNodeExecution{
         this.start = start;
         *//* DO NOT DO THIS >>> If the start has a prompt before the while, then throw an exception
@@ -31,9 +32,8 @@ public class UseOptionPanes {
         }
 
     }*/
-    public static boolean isThere(String string) {return !(string == null || string.equals(""));}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalStoryNodeExecution {
 
         String name = JOptionPane.showInputDialog(null, "What is your name?");
         JOptionPane.showMessageDialog(null, "Hello, " + name + ".");
@@ -41,6 +41,7 @@ public class UseOptionPanes {
                 "Who would you give candy to??",new StoryNode("Rohan", "Yup!! That's the correct answer!"), new StoryNode("Rahul", "Ew u need to rethink ur life decisions!"));
 
         first.decidePath();
-
+        StoryNode test = new StoryNode();
+        test.executePath();
     }
 }
