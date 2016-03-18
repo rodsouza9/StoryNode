@@ -42,6 +42,6 @@ public class UseOptionPanes {
 
         first.decidePath();
         StoryNode test = new StoryNode();
-        test.executePath();
+        //test.executePath();
     }
 }

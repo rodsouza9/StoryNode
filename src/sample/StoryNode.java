@@ -55,9 +55,16 @@ public class StoryNode {
     public StoryNode executePath() throws IllegalStoryNodeExecution{
         count++;
         if ( count == 1 && !isThere(getMessage()) ) {
-            throw new IllegalStoryNodeExecution();
+            throw new IllegalStoryNodeExecution("There is no message for the first node");
         }
+        else if (count > 1 && !isThere(prompt)) {
+            throw new IllegalStoryNodeExecution("prompt was not found");
+        }
+        /*else if () {
+
+        }*/
         return null;
+
     }
     public StoryNode decidePath() {
         StoryNode[] messages = {option1, option2};
@@ -73,7 +80,6 @@ public class StoryNode {
         return (choice == 0) ? messages[0] : messages[1];
     }
     public static boolean isThere(String string) {return !(string == null || string.equals(""));}
-
 
     public String toString() {
         return message;
