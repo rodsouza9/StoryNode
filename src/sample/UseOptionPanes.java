@@ -1,6 +1,8 @@
 package sample;// Shows several JOptionPane windows on the screen.
 
 import javax.swing.*; // for GUI components
+import java.util.Arrays;
+
 public class UseOptionPanes {
     private StoryNode start;
     private static int count = 0;
@@ -37,11 +39,19 @@ public class UseOptionPanes {
 
         String name = JOptionPane.showInputDialog(null, "What is your name?");
         JOptionPane.showMessageDialog(null, "Hello, " + name + ".");
-        StoryNode first = new StoryNode("If one guys is named Rohan, and his brother is named Rahul..." +
+        StoryNode asdf = new StoryNode("If one guys is named Rohan, and his brother is named Rahul..." +
                 "Who would you give candy to??",new StoryNode("Rohan", "Yup!! That's the correct answer!"), new StoryNode("Rahul", "Ew u need to rethink ur life decisions!"));
+        StoryNode secondA = new StoryNode("PromptAa","messageAa", new StoryNode("thing","asdf"), new StoryNode("asdf", "asdf,"));
+        StoryNode secondB = new StoryNode("PromptAb","messageAb", new StoryNode("thinsfdg","asdasf"), new StoryNode("agkhjsdf", "ahjgksdf,"));
 
-        first.decidePath();
-        StoryNode test = new StoryNode();
+        StoryNode first = new StoryNode("PromptA","messageA",secondA,secondB);
+
+
+        JOptionPane.showMessageDialog(null, first.executePath());
+        JOptionPane.showMessageDialog(null, asdf.executePath());
+
+        //first.decidePath();
+        //StoryNode test = new StoryNode();
         //test.executePath();
     }
 }

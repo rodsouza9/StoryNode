@@ -51,22 +51,40 @@ public class StoryNode {
     public StoryNode getOption2() {return option2;}
 
 
-    private static int count = 0;
+    private int count = 0;
     public StoryNode executePath() throws IllegalStoryNodeExecution{
         count++;
         if ( count == 1 && !isThere(getMessage()) ) {
             throw new IllegalStoryNodeExecution("There is no message for the first node");
         }
+        else if (option1 == null && option2 == null) {
+            return this;
+        }
+        else if (option1 != null && option2 == null) {
+            return this;
+        }
+        else if (option1 == null && option2 != null) {
+            return this;
+        }
+
         else if (count > 1 && !isThere(prompt)) {
             throw new IllegalStoryNodeExecution("prompt was not found");
         }
-        /*else if () {
-
-        }*/
-        return null;
-
+        else {
+            StoryNode[] messages = {option1, option2};
+            String[] promptMessages = {messages[0].prompt, messages[1].prompt};
+            int choice = JOptionPane.showOptionDialog(null,
+                    getMessage(),
+                    "A Silly Question",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,     //do not use a custom Icon
+                    promptMessages,  //the titles of buttons
+                    promptMessages[0]); //default button title
+            return ((choice == 0) ? messages[0] : messages[1]).executePath();
+        }
     }
-    public StoryNode decidePath() {
+    /*public StoryNode decidePath() {
         StoryNode[] messages = {option1, option2};
         String[] promptMessages = {messages[0].prompt, messages[1].prompt};
         int choice = JOptionPane.showOptionDialog(null,
@@ -78,7 +96,7 @@ public class StoryNode {
                 promptMessages,  //the titles of buttons
                 promptMessages[0]); //default button title
         return (choice == 0) ? messages[0] : messages[1];
-    }
+    }*/
     public static boolean isThere(String string) {return !(string == null || string.equals(""));}
 
     public String toString() {
