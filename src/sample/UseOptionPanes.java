@@ -1,8 +1,6 @@
 package sample;// Shows several JOptionPane windows on the screen.
-
-import javax.swing.*; // for GUI components
-import java.util.Arrays;
-
+import javax.swing.*;
+import java.util.*;
 public class UseOptionPanes {
     private StoryNode start;
     private static int count = 0;
