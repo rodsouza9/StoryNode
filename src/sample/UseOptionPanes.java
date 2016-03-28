@@ -34,7 +34,6 @@ public class UseOptionPanes {
     }*/
 
     public static void main(String[] args) throws IllegalStoryNodeExecution {
-
         String name = JOptionPane.showInputDialog(null, "What is your name?");
         JOptionPane.showMessageDialog(null, "Hello, " + name + ".");
         StoryNode asdf = new StoryNode("If one guys is named Rohan, and his brother is named Rahul..." +
